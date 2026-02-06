@@ -59,6 +59,10 @@ Copy code
 
 ---
 
+##SonarCloud integration for code quality
+<img width="1902" height="937" alt="sonar" src="https://github.com/user-attachments/assets/b74718a9-4a4f-4beb-ba18-e24ed74e0c61" />
+
+
 ## ⚙️ Setup & Run
 
 ### 1️⃣ Open project in IntelliJ
