@@ -1,13 +1,19 @@
-# Stage 1: Build with Maven
-FROM maven:3.9.6-eclipse-temurin-17 AS build
-WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
+# Use lightweight Linux base
+FROM ubuntu:22.04
 
-# Stage 2: Run the JAR
-FROM eclipse-temurin:17-jdk
+# Install Java 17
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk maven && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+
+# Copy backend jar
+COPY target/travel_itinerary_backend-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
-CMD ["java","-jar","app.jar"]
+
+CMD ["java", "-jar", "app.jar"]
+
+
 
