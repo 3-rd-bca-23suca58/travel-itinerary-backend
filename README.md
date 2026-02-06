@@ -78,3 +78,5 @@ Copy code
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+
+Development branch for ongoing backend features.
