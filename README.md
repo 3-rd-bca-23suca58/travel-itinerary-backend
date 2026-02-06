@@ -59,8 +59,9 @@ Copy code
 
 ---
 
-##SonarCloud integration for code quality
-<img width="1902" height="937" alt="sonar" src="https://github.com/user-attachments/assets/b74718a9-4a4f-4beb-ba18-e24ed74e0c61" />
+## SonarCloud integration for code quality
+<img width="959" height="430" alt="SonarCheck" src="https://github.com/user-attachments/assets/ab29759c-8df9-4dd9-a5c7-a1a0bd2644cd" />
+
 
 
 ## ⚙️ Setup & Run
