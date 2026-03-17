@@ -1,23 +1,17 @@
 package com.example.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
-public class CorsConfig {
+public class CorsConfig implements WebMvcConfigurer {
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
 
-                registry.addMapping("/**")
-                        .allowedOriginPatterns("*")   // 🔥 FIX
-                        .allowedMethods("*")
-                        .allowedHeaders("*");
-            }
-        };
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*")   // allow all origins
+                .allowedMethods("*")          // allow all methods
+                .allowedHeaders("*");         // allow all headers
     }
 }
