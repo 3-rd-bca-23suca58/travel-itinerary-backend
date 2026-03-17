@@ -14,10 +14,8 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
 
                 registry.addMapping("/**")
-                        .allowedOrigins(
-                                "https://travel-itinerary-frontend-swathi.vercel.app"
-                        )
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedOriginPatterns("*")   // 🔥 FIX
+                        .allowedMethods("*")
                         .allowedHeaders("*");
             }
         };
