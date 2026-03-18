@@ -1,7 +1,32 @@
-- name: SonarQube Scan
-  uses: sonarsource/sonarcloud-github-action@master
-  with:
-    projectKey: 3-rd-bca-23suca58_travel-itinerary-backend
-    organization: 3 rd bca 23suca58
-  env:
-    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+name: SonarQube Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build project
+        run: mvn clean verify
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectKey: 3-rd-bca-23suca58_travel-itinerary-backend
+          organization: 3-rd-bca-23suca58
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
