@@ -14,19 +14,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: maven
 
-      - name: Build project
-        run: mvn clean verify
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          projectKey: 3-rd-bca-23suca58_travel-itinerary-backend
-          organization: 3-rd-bca-23suca58
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Build and SonarCloud analysis
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=3-rd-bca-23suca58_travel-itinerary-backend \
+          -Dsonar.organization=3-rd-bca-23suca58 \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
