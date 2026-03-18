@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # - name: SonarQube Scan
 #   uses: sonarsource/sonarcloud-github-action@master
 #   with:
@@ -5,3 +6,35 @@
 #     organization: 3 rd bca 23suca58
 #   env:
 #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+=======
+name: SonarQube Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: maven
+
+      - name: Build and SonarCloud analysis
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=3-rd-bca-23suca58_travel-itinerary-backend \
+            -Dsonar.organization=3-rd-bca-23suca58 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+>>>>>>> 5baef05222bbb5b1f248aa1d43575230f9398b7b
