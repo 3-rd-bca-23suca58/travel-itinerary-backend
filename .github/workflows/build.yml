@@ -1,7 +1,0 @@
-- name: SonarQube Scan
-  uses: sonarsource/sonarcloud-github-action@master
-  with:
-    projectKey: 3-rd-bca-23suca58_travel-itinerary-backend
-    organization: 3 rd bca 23suca58
-  env:
-    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
